@@ -1,0 +1,52 @@
+/* Inherit all styles from Login.css */
+@import './Login.css';
+
+/* Additional styles specific to signup */
+.login-form h2 {
+    margin-bottom: 8px;
+}
+
+.signup-subtitle {
+    color: #717171;
+    font-size: 14px;
+    margin-bottom: 32px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #222222;
+}
+
+.password-requirements {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #717171;
+    line-height: 1.4;
+}
+
+.terms-text {
+    font-size: 12px;
+    color: #717171;
+    margin-top: 16px;
+    line-height: 1.4;
+}
+
+.terms-text a {
+    color: #222222;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.terms-text a:hover {
+    color: #000000;
+}
+
+/* Additional responsive styles */
+@media (max-width: 744px) {
+    .signup-subtitle {
+        margin-bottom: 24px;
+    }
+} 

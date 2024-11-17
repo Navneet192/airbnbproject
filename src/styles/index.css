@@ -1,0 +1,6 @@
+@import './base.css';
+@import './components/Navbar.css';
+@import './components/Hero.css';
+@import './components/Card.css';
+@import './components/Login.css';
+@import './components/SignUp.css'; 

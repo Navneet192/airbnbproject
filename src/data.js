@@ -1,108 +1,158 @@
-const experiences = [
+export default [
     {
         id: 1,
-        title: "Life Lessons with Katie Zaferes",
-        description: "I will share with you what I call \"Positively Impactful Moments of Disappointment.\" Throughout my career, many of my highest moments only came after setbacks and losses. But learning from those difficult moments is what gave me the ability to rise above them and reach my goals.",
-        price: 136,
-        coverImg: "image2.png",
+        title: "Japanese Sushi Making Masterclass",
+        description: "Learn authentic sushi making techniques from a Tokyo chef",
+        price: 85,
+        coverImg: "../images/image2.png",
         stats: {
-            rating: 5.0,
-            reviewCount: 6
+            rating: 4.9,
+            reviewCount: 128
         },
-        location: "Online",
-        openSpots: 0,
+        location: "Tokyo, Japan",
+        openSpots: 5,
     },
     {
         id: 2,
-        title: "Learn Wedding Photography",
-        description: "Interested in becoming a wedding photographer? For beginner and experienced photographers alike, join us in learning techniques required to leave the happy couple with memories that'll last a lifetime.",
-        price: 125,
-        coverImg: "image4.png",
+        title: "Parisian Pastry Workshop",
+        description: "Master the art of French pastry making",
+        price: 65,
+        coverImg: "../images/pastry.jpg",
         stats: {
-            rating: 5.0,
-            reviewCount: 30
+            rating: 4.8,
+            reviewCount: 97
         },
-        location: "Online",
-        openSpots: 27,
+        location: "Paris, France",
+        openSpots: 0,
     },
     {
         id: 3,
-        title: "Group Mountain Biking",
-        description: "Experience the beautiful Norwegian landscape and meet new friends all while conquering rugged terrain on your mountain bike. (Bike provided!)",
-        price: 50,
-        coverImg: "image3.png",
+        title: "Yoga on Barcelona Beach",
+        description: "Sunrise yoga session with Mediterranean views",
+        price: 35,
+        coverImg: "../images/yoga1.jpg",
         stats: {
-            rating: 4.8,
-            reviewCount: 2
+            rating: 4.7,
+            reviewCount: 164
         },
-        location: "Norway",
-        openSpots: 3,
+        location: "Barcelona, Spain",
+        openSpots: 12,
     },
     {
-        id: 3,
-        title: "Group Mountain Biking",
-        description: "Experience the beautiful Norwegian landscape and meet new friends all while conquering rugged terrain on your mountain bike. (Bike provided!)",
-        price: 50,
-        coverImg: "image3.png",
+        id: 4,
+        title: "Italian Wine Tasting",
+        description: "Sample finest wines from Tuscany region",
+        price: 75,
+        coverImg: "../images/wine.jpg",
         stats: {
-            rating: 4.8,
-            reviewCount: 2
+            rating: 4.9,
+            reviewCount: 89
         },
-        location: "Norway",
-        openSpots: 3,
+        location: "Florence, Italy",
+        openSpots: 8,
     },
     {
-        id: 3,
-        title: "Group Mountain Biking",
-        description: "Experience the beautiful Norwegian landscape and meet new friends all while conquering rugged terrain on your mountain bike. (Bike provided!)",
+        id: 5,
+        title: "Street Photography in NYC",
+        description: "Capture the essence of New York City",
         price: 50,
-        coverImg: "image3.png",
+        coverImg: "../images/streetPhotography.jpg",
         stats: {
-            rating: 4.8,
-            reviewCount: 2
+            rating: 4.6,
+            reviewCount: 142
         },
-        location: "Norway",
-        openSpots: 3,
+        location: "New York, USA",
+        openSpots: 15,
     },
     {
-        id: 3,
-        title: "Group Mountain Biking",
-        description: "Experience the beautiful Norwegian landscape and meet new friends all while conquering rugged terrain on your mountain bike. (Bike provided!)",
-        price: 50,
-        coverImg: "image3.png",
+        id: 6,
+        title: "Thai Cooking Adventure",
+        description: "Cook authentic Pad Thai and Green Curry",
+        price: 45,
+        coverImg: "../images/thaifood.jpg",
         stats: {
             rating: 4.8,
-            reviewCount: 2
+            reviewCount: 113
         },
-        location: "Norway",
-        openSpots: 3,
+        location: "Bangkok, Thailand",
+        openSpots: 10,
     },
     {
-        id: 3,
-        title: "Group Mountain Biking",
-        description: "Experience the beautiful Norwegian landscape and meet new friends all while conquering rugged terrain on your mountain bike. (Bike provided!)",
-        price: 50,
-        coverImg: "image3.png",
+        id: 7,
+        title: "Salsa Dancing in Havana",
+        description: "Learn Cuban salsa from local dancers",
+        price: 40,
+        coverImg: "../images/saladance.jpg",
         stats: {
-            rating: 4.8,
-            reviewCount: 2
+            rating: 4.9,
+            reviewCount: 75
         },
-        location: "Norway",
-        openSpots: 3,
+        location: "Havana, Cuba",
+        openSpots: 0,
     },
     {
-        id: 3,
-        title: "Group Mountain Biking",
-        description: "Experience the beautiful Norwegian landscape and meet new friends all while conquering rugged terrain on your mountain bike. (Bike provided!)",
-        price: 50,
-        coverImg: "image3.png",
+        id: 8,
+        title: "African Safari Photography",
+        description: "Capture wildlife in their natural habitat",
+        price: 120,
+        coverImg: "../images/africansafari.jpg",
+        stats: {
+            rating: 4.9,
+            reviewCount: 156
+        },
+        location: "Nairobi, Kenya",
+        openSpots: 6,
+    },
+    {
+        id: 9,
+        title: "Greek Island Cooking",
+        description: "Traditional Mediterranean cuisine class",
+        price: 55,
+        coverImg: "../images/greekcocking.jpg",
+        stats: {
+            rating: 4.7,
+            reviewCount: 98
+        },
+        location: "Santorini, Greece",
+        openSpots: 9,
+    },
+    {
+        id: 10,
+        title: "Berlin Street Art Tour",
+        description: "Explore urban art culture",
+        price: 30,
+        coverImg: "../images/Street.jpg",
+        stats: {
+            rating: 4.6,
+            reviewCount: 182
+        },
+        location: "Berlin, Germany",
+        openSpots: 20,
+    },
+    {
+        id: 11,
+        title: "Moroccan Tagine Cooking",
+        description: "Learn to cook traditional Moroccan dishes",
+        price: 60,
+        coverImg: "../images/moroccan.jpg",
         stats: {
             rating: 4.8,
-            reviewCount: 2
+            reviewCount: 94
         },
-        location: "Norway",
-        openSpots: 3,
+        location: "Marrakech, Morocco",
+        openSpots: 8,
     },
-];
-
-export default experiences;
+    {
+        id: 12,
+        title: "Australian Surfing Lessons",
+        description: "Catch waves at Bondi Beach",
+        price: 70,
+        coverImg: "../images/Australian.jpg",
+        stats: {
+            rating: 4.7,
+            reviewCount: 145
+        },
+        location: "Sydney, Australia",
+        openSpots: 6,
+    },
+]
