@@ -1,25 +1,51 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { auth, googleProvider } from '../config/firebase';
+import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import '../styles/styling/Login.css';
 
-export default function Login({ onLogin, onClose, show }) {
-    const [credentials, setCredentials] = useState({
+export default function SignIn({ onLogin, onClose, show }) {
+    const initialState = {
         email: '',
         password: ''
-    });
+    };
 
-    if (!show) return null;
+    const [credentials, setCredentials] = useState(initialState);
 
-    const handleSubmit = (e) => {
+    useEffect(() => {
+        if (!show) {
+            setCredentials(initialState);
+        }
+    }, [show]);
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if (credentials.email && credentials.password) {
+        try {
+            await signInWithEmailAndPassword(
+                auth,
+                credentials.email,
+                credentials.password
+            );
+            alert("Successfully signed in!");
             onLogin(credentials);
+            setCredentials(initialState); 
             onClose();
+        } catch (error) {
+            console.error("Error signing in:", error.message);
+            alert(error.message);
         }
     };
 
-    const handleGoogleLogin = () => {
-        // Handle Google login logic here
-        console.log("Logging in with Google");
+    const handleGoogleSignIn = async () => {
+        try {
+            const result = await signInWithPopup(auth, googleProvider);
+            alert("Successfully signed in with Google!");
+            onLogin(result.user);
+            setCredentials(initialState); 
+            onClose();
+        } catch (error) {
+            console.error("Error signing in with Google:", error.message);
+            alert(error.message);
+        }
     };
 
     const handleChange = (e) => {
@@ -36,18 +62,14 @@ export default function Login({ onLogin, onClose, show }) {
         }
     };
 
+    if (!show) return null;
+
     return (
         <div className="modal-overlay" onClick={handleOverlayClick}>
             <div className="login-container">
                 <form onSubmit={handleSubmit} className="login-form">
-                    <button 
-                        type="button" 
-                        className="close-button"
-                        onClick={onClose}
-                    >
-                        ×
-                    </button>
-                    <h2>Login</h2>
+                    <button type="button" className="close-button" onClick={onClose}>×</button>
+                    <h2>Sign in</h2>
                     <div className="form-group">
                         <input
                             type="email"
@@ -68,7 +90,7 @@ export default function Login({ onLogin, onClose, show }) {
                             required
                         />
                     </div>
-                    <button type="submit" className="login-button">Login</button>
+                    <button type="submit" className="login-button">Sign in</button>
                     
                     <div className="divider">
                         <span>or</span>
@@ -77,10 +99,10 @@ export default function Login({ onLogin, onClose, show }) {
                     <button 
                         type="button" 
                         className="google-login-button"
-                        onClick={handleGoogleLogin}
+                        onClick={handleGoogleSignIn}
                     >
                         <img 
-                            src="../images/google.jpg" 
+                            src="/images/google.png"
                             alt="Google" 
                             className="google-icon"
                         />
@@ -90,4 +112,4 @@ export default function Login({ onLogin, onClose, show }) {
             </div>
         </div>
     );
-} 
+}

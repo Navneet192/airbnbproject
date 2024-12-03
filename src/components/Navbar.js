@@ -7,7 +7,7 @@ export default function Navbar({ onLoginClick, onSignUpClick }) {
             <img src="../images/airbnb-logo.png" className="nav--logo" alt="airbnb logo" />
             <div className="nav--buttons">
                 <button className="nav--login-button" onClick={onLoginClick}>
-                    Login
+                    Sign-in
                 </button>
                 <button className="nav--signup-button" onClick={onSignUpClick}>
                     Sign Up

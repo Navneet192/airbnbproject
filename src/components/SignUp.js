@@ -1,31 +1,60 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { auth, googleProvider } from '../config/firebase';
+import { createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import '../styles/styling/SignUp.css';
 
 export default function SignUp({ onSignUp, onClose, show }) {
-    const [userData, setUserData] = useState({
+    const initialState = {
         name: '',
         email: '',
         password: '',
         confirmPassword: ''
-    });
+    };
+
+    const [userData, setUserData] = useState(initialState);
+
+   
+    useEffect(() => {
+        if (!show) {
+            setUserData(initialState);
+        }
+    }, [show]);
 
     if (!show) return null;
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (userData.password !== userData.confirmPassword) {
             alert("Passwords don't match!");
             return;
         }
-        if (userData.name && userData.email && userData.password) {
-            onSignUp(userData);
+        try {
+            const result = await createUserWithEmailAndPassword(
+                auth,
+                userData.email,
+                userData.password
+            );
+            alert("Account created successfully! Welcome to Airbnb.");
+            onSignUp({ ...userData, uid: result.user.uid });
+            setUserData(initialState); 
             onClose();
+        } catch (error) {
+            console.error("Error signing up:", error.message);
+            alert(error.message);
         }
     };
 
-    const handleGoogleSignUp = () => {
-        // Handle Google sign up logic here
-        console.log("Signing up with Google");
+    const handleGoogleSignUp = async () => {
+        try {
+            const result = await signInWithPopup(auth, googleProvider);
+            alert("Successfully signed up with Google! Welcome to Airbnb.");
+            onSignUp(result.user);
+            setUserData(initialState); 
+            onClose();
+        } catch (error) {
+            console.error("Error signing up with Google:", error.message);
+            alert(error.message);
+        }
     };
 
     const handleChange = (e) => {
@@ -56,7 +85,7 @@ export default function SignUp({ onSignUp, onClose, show }) {
                         onClick={handleGoogleSignUp}
                     >
                         <img 
-                            src="../images/google.jpg" 
+                            src="/images/google.png" 
                             alt="Google" 
                             className="google-icon"
                         />
@@ -100,7 +129,7 @@ export default function SignUp({ onSignUp, onClose, show }) {
                             required
                         />
                         <p className="password-requirements">
-                            Password must be at least 8 characters long and include a number
+                            Password must be at least 8 characters long
                         </p>
                     </div>
                     <div className="form-group">
@@ -124,4 +153,4 @@ export default function SignUp({ onSignUp, onClose, show }) {
             </div>
         </div>
     );
-} 
+}
