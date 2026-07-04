@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { auth, googleProvider } from '../config/firebase';
+import { auth, googleProvider, isFirebaseConfigured } from '../config/firebase';
 import { createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import '../styles/styling/SignUp.css';
 
@@ -24,6 +24,11 @@ export default function SignUp({ onSignUp, onClose, show }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (!isFirebaseConfigured || !auth) {
+            alert('Firebase is not configured yet. Add your REACT_APP_FIREBASE_* values to .env to enable sign up.');
+            return;
+        }
+
         if (userData.password !== userData.confirmPassword) {
             alert("Passwords don't match!");
             return;
@@ -45,6 +50,11 @@ export default function SignUp({ onSignUp, onClose, show }) {
     };
 
     const handleGoogleSignUp = async () => {
+        if (!isFirebaseConfigured || !auth || !googleProvider) {
+            alert('Firebase is not configured yet. Add your REACT_APP_FIREBASE_* values to .env to enable Google sign up.');
+            return;
+        }
+
         try {
             const result = await signInWithPopup(auth, googleProvider);
             alert("Successfully signed up with Google! Welcome to Airbnb.");

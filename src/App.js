@@ -5,7 +5,7 @@ import Card from "./components/Card"
 import SignIn from "./components/SignIn"
 import SignUp from "./components/SignUp"
 import data from "./data"
-import { auth } from "./config/firebase"
+import { auth, isFirebaseConfigured } from "./config/firebase"
 import { onAuthStateChanged } from "firebase/auth"
 
 export default function App() {
@@ -14,6 +14,10 @@ export default function App() {
     const [showSignUp, setShowSignUp] = useState(false);
     
     useEffect(() => {
+        if (!isFirebaseConfigured || !auth) {
+            return undefined;
+        }
+
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
         });

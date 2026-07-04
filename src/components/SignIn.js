@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { auth, googleProvider } from '../config/firebase';
+import { auth, googleProvider, isFirebaseConfigured } from '../config/firebase';
 import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import '../styles/styling/Login.css';
 
@@ -19,6 +19,11 @@ export default function SignIn({ onLogin, onClose, show }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (!isFirebaseConfigured || !auth) {
+            alert('Firebase is not configured yet. Add your REACT_APP_FIREBASE_* values to .env to enable sign in.');
+            return;
+        }
+
         try {
             await signInWithEmailAndPassword(
                 auth,
@@ -36,6 +41,11 @@ export default function SignIn({ onLogin, onClose, show }) {
     };
 
     const handleGoogleSignIn = async () => {
+        if (!isFirebaseConfigured || !auth || !googleProvider) {
+            alert('Firebase is not configured yet. Add your REACT_APP_FIREBASE_* values to .env to enable Google sign in.');
+            return;
+        }
+
         try {
             const result = await signInWithPopup(auth, googleProvider);
             alert("Successfully signed in with Google!");
