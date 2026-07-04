@@ -38,14 +38,21 @@ export default function App() {
     };
     
     return (
-        <div>
+        <div className="app-shell">
             <Navbar 
                 onLoginClick={() => setShowLogin(true)} 
                 onSignUpClick={() => setShowSignUp(true)}
             />
             <Hero />
-            <section className="cards-list">
-                {cards}
+            <section className="experiences-section" aria-labelledby="experiences-title">
+                <div className="section-heading">
+                    <span className="eyebrow">Curated this week</span>
+                    <h2 id="experiences-title">Small-group adventures with local experts</h2>
+                    <p>Handpicked workshops, tastings, tours, and active escapes across the world.</p>
+                </div>
+                <div className="cards-list">
+                    {cards}
+                </div>
             </section>
             <SignIn 
                 show={showLogin}
